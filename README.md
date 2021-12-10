@@ -55,4 +55,19 @@ fdisk /dev/sdb
 - Type `n` to make the next partition.
 - Press ENTER to accept the first sector as default value.
 - Type `+370G` to make the HOME partition as 370GiB.
+
+- Type `n` to make the next partition.
+- Press ENTER to accept the first sector as default value.
+- Press ENTER to accept the last sector as default value.
+- Type `t` and press ENTER to change the partition type. (Accept partition number as Partition 4 when prompted)
+- Type `19` and press ENTER to make Fourth Partition as SWAP Partition.
+- Type `p` and press ENTER to print out the partition table. It should be like this
+- [x] /dev/sdb1 250M EFI System
+- [x] /dev/sdb2 120G Linux filesystem
+- [x] /dev/sdb3 370G Linux filesystem
+- [x] /dev/sdb4 9.8G Linux swap
+- If everything looks good, type `w` and press ENTER to write and exit fdisk. If there is any problems, type `q` and press ENTER to quit without writing any of the above changes to the disk.
+
+Your aim here should be to make the SWAP partition twice the size of your RAM. But if your RAM is more than 4GB, then make SWAP around 8GB max.
+You can make your EFI partition from anything between 200MB to 512 MB. Anything below might create problems later. Anything more might not be realistic, unless you want to multi-boot.
   
