@@ -41,6 +41,7 @@ fdisk /dev/sdb
 
 
 - Type `n` to make new partition.
+- Press ENTER to accept partition number as `1`, that is default.
 - Press ENTER to accept the first sector as default value.
 - Type `+250M` to make the last sector of size 250MB from the first sector for the first partition (This is our EFI Partition).
 - Type `t` and press ENTER to change the partition type. (Accept partition number as Partition 1 if prompted)
@@ -48,17 +49,20 @@ fdisk /dev/sdb
 
 
 - Type `n` to make the next partition.
+- Press ENTER to accept partition number as `2`, that is default.
 - Press ENTER to accept the first sector as default value.
 - Type `+120G` to make the ROOT Partition as 120 GiB.
 
 
 - Type `n` to make the next partition.
+- Press ENTER to accept partition number as `3`, that is default.
 - Press ENTER to accept the first sector as default value.
 - Type `+370G` to make the HOME partition as 370GiB.
 
 - Type `n` to make the next partition.
+- Press ENTER to accept partition number as `4`, that is default.
 - Press ENTER to accept the first sector as default value.
-- Press ENTER to accept the last sector as default value.
+- Press ENTER to accept the last sector as all remaining disk space.
 - Type `t` and press ENTER to change the partition type. (Accept partition number as Partition 4 when prompted)
 - Type `19` and press ENTER to make Fourth Partition as SWAP Partition.
 - Type `p` and press ENTER to print out the partition table. It should be like this
@@ -70,4 +74,20 @@ fdisk /dev/sdb
 
 Your aim here should be to make the SWAP partition twice the size of your RAM. But if your RAM is more than 4GB, then make SWAP around 8GB max.
 You can make your EFI partition from anything between 200MB to 512 MB. Anything below might create problems later. Anything more might not be realistic, unless you want to multi-boot.
-  
+
+- Now, if you reached till this step, everything is well and good.
+```
+pacman -Syyy
+pacman -S nano vim git
+git clone https://github.com/ArijitKHaldar/ArchLinuxInstall.git
+cd ArchLinuxInstall
+chmod +x install.sh
+nano install.sh
+```
+
+Please go through all the commented lines in the `install.sh` and make necessary corrections as instructed.
+
+Save and exit the editor. Then `cd ..` to go out of the `ArchLinuxInstall/` directory.
+```
+./ArchLinuxInstall/install.sh
+```
